@@ -193,23 +193,69 @@
 \newcommand\rowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
 
 % ---
+% Redefinição de estilo do sumário
+% ---
+\renewcommand*{\l@part}[2]{
+	\ifnum \c@tocdepth >-2\relax
+		\addpenalty{-\@highpenalty}
+		\addvspace{2.25em \@plus\p@}
+		\begingroup
+			\setlength\@tempdima{3em}
+			\parindent \z@ \rightskip \@pnumwidth
+			\parfillskip -\@pnumwidth{
+				\leavevmode
+				\large \bfseries #1\hfil \hbox to\@pnumwidth{\hss #2}
+			}\par
+			\nobreak
+			\global\@nobreaktrue
+			\everypar{\global\@nobreakfalse\everypar{}}
+		\endgroup
+	\fi
+}
+
+\renewcommand*{\l@chapter}[2]{
+	\ifnum \c@tocdepth >\m@ne
+		\addpenalty{-\@highpenalty}
+		\vskip 1.0em \@plus\p@
+		\setlength\@tempdima{1.5em}
+		\begingroup
+			\parindent \z@ \rightskip \@pnumwidth
+			\parfillskip -\@pnumwidth
+			\leavevmode \bfseries
+			\advance\leftskip\@tempdima
+			\hskip -\leftskip
+			#1\nobreak\hfil \nobreak\hbox to\@pnumwidth{\hss #2}\par
+			\penalty\@highpenalty
+		\endgroup
+	\fi
+}
+
+\renewcommand*{\l@section}{\@dottedtocline{1}{1.5em}{2.3em}}
+\renewcommand*{\l@subsection}{\@dottedtocline{2}{3.8em}{3.2em}}
+\renewcommand*{\l@subsubsection}{\@dottedtocline{3}{7.0em}{4.1em}}
+\renewcommand*{\l@paragraph}{\@dottedtocline{4}{10em}{5em}}
+\renewcommand*{\l@subparagraph}{\@dottedtocline{5}{12em}{6em}}
+
+% ---
 % Redefinição de estilo de partes
 % ---
-\renewcommand{\part}{\cleardoublepage
-	\thispagestyle{plain}%
+\renewcommand{\part}{
+	\cleardoublepage
+	\thispagestyle{plain}
 	\@tempswafalse
 	\hbox{}\vfil
-	\secdef\@part\@spart}
+	\secdef\@part\@spart
+}
 
-\def\@part[#1]#2{%
+\def\@part[#1]#2{
 	\ifnum \c@secnumdepth >-2\relax
-	\refstepcounter{part}%
-	\addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+		\refstepcounter{part}
+		\addcontentsline{toc}{part}{\thepart\hspace{1em}#1}
 	\else
-	\addcontentsline{toc}{part}{#1}%
+		\addcontentsline{toc}{part}{#1}
 	\fi
-	\markboth{}{}
-	{\centering
+	\markboth{}{}{
+		\centering
 		\interlinepenalty \@M
 		\reset@font
 		\ifnum \c@secnumdepth >-2\relax
@@ -217,17 +263,23 @@
 		\par
 		\vskip 20\p@
 		\fi
-		\Huge \bfseries #2\par}%
-	\@endpart}
+		\Huge \bfseries #2\par
+	}
+	\@endpart
+}
 
-\def\@spart#1{%
-	{\centering
+\def\@spart#1{
+	{
+		\centering
 		\interlinepenalty \@M
 		\reset@font
-		\Huge \bfseries #1\par}%
-	\@endpart}
+		\Huge \bfseries #1\par
+	}
+	\@endpart
+}
 
-\def\@endpart{\vfil\newpage
+\def\@endpart{
+	\vfil\newpage
 	\if@twoside
 	\hbox{}%
 	\thispagestyle{empty}%
@@ -235,7 +287,8 @@
 	\fi
 	\if@tempswa
 	\twocolumn
-	\fi}
+	\fi
+}
 
 % ---
 % Redefinição de estilo de capítulos
@@ -248,37 +301,34 @@
 }
 
 \def\@chapter[#1]#2{
-	%
 	\ifnum \c@secnumdepth >\m@ne
-	\refstepcounter{chapter}%
-	\typeout{\@chapapp\space\thechapter.}%
-	\addcontentsline{toc}{chapter}%
-	{\protect\numberline{\thechapter}#1}%
+		\refstepcounter{chapter}
+		\typeout{\@chapapp\space\thechapter.}
+		\addcontentsline{toc}{chapter}
+		{\protect\numberline{\thechapter}#1}
 	\else
-	\addcontentsline{toc}{chapter}{#1}%
+		\addcontentsline{toc}{chapter}{#1}
 	\fi
-	%
-	\chaptermark{#1}%
-	\addtocontents{lof}{\protect\addvspace{10\p@}}%
-	\addtocontents{lot}{\protect\addvspace{10\p@}}%
-	\@makechapterhead{#2}%
+	\chaptermark{#1}
+	\addtocontents{lof}{\protect\addvspace{10\p@}}
+	\addtocontents{lot}{\protect\addvspace{10\p@}}
+	\@makechapterhead{#2}
 	\@afterheading
 }
 
-\def\@makechapterhead#1{%
-	\vspace*{50\p@}%
-	{\parindent \z@ \raggedright \reset@font
-		%
+\def\@makechapterhead#1{
+	\vspace*{50\p@}{
+		\parindent \z@ \raggedright \reset@font
 		\ifnum \c@secnumdepth >\m@ne
 		\huge\bfseries \@chapapp{} \thechapter
 		\par\nobreak
 		\vskip 20\p@
 		\fi
-		%
 		\interlinepenalty\@M
 		\Huge \bfseries #1\par\nobreak
 		\vskip 40\p@
-}}
+	}
+}
 
 \def\@schapter#1{\@makeschapterhead{#1}%
 	\@afterheading}
@@ -290,7 +340,8 @@
 		\interlinepenalty\@M
 		\Huge \bfseries  #1\par\nobreak
 		\vskip 40\p@
-}}
+	}
+}
 
 % ---
 % Redefinição de estilo de seções
@@ -688,19 +739,11 @@
 % ---
 \newcommand{\Sumario}{%
 	\PRIVATEbookmarkthis{\contentsname}
-	\pdfbookmark[0]{\contentsname}{toc}
-	\tableofcontents*
+	\chapter[n]*{\contentsname}
+	\@mkboth{\contentsname}{\contentsname}
+	\@starttoc{toc}
 	\clearpage
 }
-
-%\def\Sumario{\tableofcontents}
-%\renewcommand{\tableofcontents}{
-%	\PRIVATEbookmarkthis{\contentsname}
-%	\chapter[n]*{\contentsname}
-%	\@mkboth{\contentsname}{\contentsname}%
-%	\@starttoc{toc}%
-%	\clearpage
-%}
 
 %
 \newcommand{\Introducao}{%
