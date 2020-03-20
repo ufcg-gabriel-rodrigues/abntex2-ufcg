@@ -817,13 +817,9 @@
 \setlength{\parskip}{0.2cm}		% Controle do espaçamento entre um parágrafo e outro. Tente também \onelineskip
 
 % ---
-% Redefinição da linha no topo da página do estilo "ruled"
+% Redefinição da espessura de \normalrulethickness
 % ---
-\renewcommand{\ruledheadrule}{%
-	\hrule \@width \textwidth \@height \normalrulethickness
-	\vskip \normalrulethickness
-	\hrule \@width \textwidth \@height \normalrulethickness
-	\vskip -4\normalrulethickness}
+\setlength\normalrulethickness{0pt}
 
 % ---
 % Estilo de cabeçalho e rodapé da primeira página do capítulo
