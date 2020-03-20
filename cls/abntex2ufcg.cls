@@ -30,7 +30,7 @@
 % Pacotes obrigatórios
 % ---
 \RequirePackage{expl3}
-\RequirePackage{nomencl}
+\RequirePackage[refpage]{nomencl}
 \RequirePackage{environ}
 \RequirePackage{pdflscape}
 \RequirePackage{afterpage}
@@ -761,10 +761,11 @@
 \newcommand{\abreviatura}{\nomenclature}
 \renewcommand{\nomname}{Lista de s\'{\i}mbolos e abreviaturas}
 \makenomenclature
-\newcommand{\ListadeSimbolos}{%
+\newcommand{\ListadeSimbolos}{
 	\PRIVATEbookmarkthis{\nomname}
 	\@mkboth{\nomname}{\nomname}
 	\printnomenclature
+	\thispagestyle{empty}
 	\clearpage
 }
 
