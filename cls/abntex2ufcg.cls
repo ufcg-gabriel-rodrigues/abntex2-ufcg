@@ -671,6 +671,12 @@
 % ---
 % Impressão da lista de figuras
 % ---
+%\renewcommand{\cftfigurename}{\figurename\space} 
+%\renewcommand*{\cftfigureaftersnum}{\hfill\textendash\hfill}
+\renewcommand{\cftfigurename}{}
+\renewcommand*{\cftfigureaftersnum}{}
+\renewcommand*{\l@figure}{\@dottedtocline{1}{1.5em}{2.3em}}
+
 \def\ListadeFiguras{\listoffigures}
 \renewcommand{\listoffigures}{
 	\PRIVATEbookmarkthis{\listfigurename}
@@ -679,8 +685,6 @@
 	\@starttoc{lof}%
 	\clearpage
 }
-
-\renewcommand*{\l@figure}{\@dottedtocline{1}{1.5em}{2.3em}}
 
 % ---
 % Possibilita criação de Quadros e Lista de quadros.
@@ -695,8 +699,11 @@
 % configurações para atender às regras da ABNT
 \setfloatadjustment{quadro}{\centering}
 \counterwithout{quadro}{chapter}
-\renewcommand{\cftquadroname}{\quadroname\space} 
-\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+%\renewcommand{\cftquadroname}{\quadroname\space} 
+%\renewcommand*{\cftquadroaftersnum}{\hfill\textendash\hfill}
+\renewcommand{\cftquadroname}{} 
+\renewcommand*{\cftquadroaftersnum}{}
+\renewcommand*{\l@quadro}{\@dottedtocline{1}{1.5em}{2.3em}}
 
 \setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
 
@@ -711,6 +718,12 @@
 % ---
 % Imprimir lista de tabelas
 % ---
+%\renewcommand{\cfttablename}{\tablename\space}
+%\renewcommand*{\cfttableaftersnum}{\hfill\textendash\hfill}	
+\renewcommand{\cfttablename}{}
+\renewcommand*{\cfttableaftersnum}{}
+\renewcommand*{\l@table}{\@dottedtocline{1}{1.5em}{2.3em}}
+
 \def\ListadeTabelas{\listoftables}
 \renewcommand{\listoftables}{
 	\PRIVATEbookmarkthis{\listtablename}
