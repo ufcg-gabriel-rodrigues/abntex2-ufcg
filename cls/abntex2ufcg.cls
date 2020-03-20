@@ -780,28 +780,26 @@
 	\clearpage
 }
 
-%
-\newcommand{\Introducao}{%
-	\newpage\pagestyle{headings}\pagenumbering{arabic}
-	\@restonecolfalse
-	\IfFileExists{\@currdir src/etc/introduc.tex}{
+% ---
+% Imprimir introdução
+% ---
+\newcommand{\Introducao}{
+	\IfFileExists{\@currdir src/etc/introducao.tex}{
 		\chapter{Introdu\c{c}\~{a}o}
 		\@mkboth{\chaptername\ \thechapter. Introdu\c{c}\~{a}o}{\chaptername\ \thechapter. Introdu\c{c}\~{a}o}
-		\input{src/etc/introduc.tex}}{\typeout{MISSING FILE: src/etc/introduc.tex}}
-	\if@restonecol\twocolumn\fi
+		\input{src/etc/introducao.tex}
+	}{\typeout{MISSING FILE: src/etc/introducao.tex}}
 }
-%
-\newcommand{\Conclusao}{%
-	\newpage\pagestyle{headings}  
-	\setcounter{mypageno}{\value{page}}
-	\pagenumbering{arabic}
-	\setcounter{page}{\value{mypageno}}%
-	\@restonecolfalse
-	\IfFileExists{\@currdir src/etc/conclusa.tex}{
+
+% ---
+% Imprimir conclusão
+% ---
+\newcommand{\Conclusao}{
+	\IfFileExists{\@currdir src/etc/conclusao.tex}{
 		\chapter{Conclus\~{a}o}
 		\@mkboth{\chaptername\ \thechapter. Conclus\~{a}o}{\chaptername\ \thechapter. Conclus\~{a}o}
-		\input{src/etc/conclusa.tex}}{\typeout{MISSING FILE: src/etc/conclusa.tex}}
-	\if@restonecol\twocolumn\fi
+		\input{src/etc/conclusao.tex}
+	}{\typeout{MISSING FILE: src/etc/conclusao.tex}}
 }
 
 % ---
