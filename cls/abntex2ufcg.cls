@@ -260,9 +260,9 @@
 		\interlinepenalty \@M
 		\reset@font
 		\ifnum \c@secnumdepth >-2\relax
-		\huge\bfseries \partname~\thepart
-		\par
-		\vskip 20\p@
+			\huge\bfseries \partname~\thepart
+			\par
+			\vskip 20\p@
 		\fi
 		\Huge \bfseries #2\par
 	}
@@ -282,12 +282,12 @@
 \def\@endpart{
 	\vfil\newpage
 	\if@twoside
-	\hbox{}%
-	\thispagestyle{empty}%
-	\newpage
+		\hbox{}%
+		\thispagestyle{empty}%
+		\newpage
 	\fi
 	\if@tempswa
-	\twocolumn
+		\twocolumn
 	\fi
 }
 
@@ -321,9 +321,9 @@
 	\vspace*{50\p@}{
 		\parindent \z@ \raggedright \reset@font
 		\ifnum \c@secnumdepth >\m@ne
-		\huge\bfseries \@chapapp{} \thechapter
-		\par\nobreak
-		\vskip 20\p@
+			\huge\bfseries \@chapapp{} \thechapter
+			\par\nobreak
+			\vskip 20\p@
 		\fi
 		\interlinepenalty\@M
 		\Huge \bfseries #1\par\nobreak
@@ -681,11 +681,11 @@
 \def\ListadeFiguras{\listoffigures}
 \renewcommand{\listoffigures}{
 	\ifnum\totalfigures>0
-	\PRIVATEbookmarkthis{\listfigurename}
-	\chapter[n]*{\listfigurename}
-	\@mkboth{\listfigurename}{\listfigurename}%
-	\@starttoc{lof}%
-	\clearpage
+		\PRIVATEbookmarkthis{\listfigurename}
+		\chapter[n]*{\listfigurename}
+		\@mkboth{\listfigurename}{\listfigurename}%
+		\@starttoc{lof}%
+		\clearpage
 	\fi
 }
 
@@ -712,11 +712,11 @@
 
 \newcommand{\ListadeQuadros}{
 	\ifnum\totalquadros>0
-	\PRIVATEbookmarkthis{\listofquadrosname}
-	\chapter[n]*{\listofquadrosname}
-	\@mkboth{\listofquadrosname}{\listofquadrosname}%
-	\@starttoc{loq}%
-	\clearpage
+		\PRIVATEbookmarkthis{\listofquadrosname}
+		\chapter[n]*{\listofquadrosname}
+		\@mkboth{\listofquadrosname}{\listofquadrosname}%
+		\@starttoc{loq}%
+		\clearpage
 	\fi
 }
 
@@ -732,11 +732,11 @@
 \def\ListadeTabelas{\listoftables}
 \renewcommand{\listoftables}{
 	\ifnum\totaltables>0
-	\PRIVATEbookmarkthis{\listtablename}
-	\chapter[n]*{\listtablename}
-	\@mkboth{\listtablename}{\listtablename}%
-	\@starttoc{lot}%
-	\clearpage
+		\PRIVATEbookmarkthis{\listtablename}
+		\chapter[n]*{\listtablename}
+		\@mkboth{\listtablename}{\listtablename}%
+		\@starttoc{lot}%
+		\clearpage
 	\fi
 }
 
