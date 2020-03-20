@@ -36,6 +36,7 @@
 \RequirePackage{afterpage}
 \RequirePackage{color}
 \RequirePackage[final]{pdfpages}
+\RequirePackage{totalcount}
 
 % ---
 % Opções do curso
@@ -679,11 +680,13 @@
 
 \def\ListadeFiguras{\listoffigures}
 \renewcommand{\listoffigures}{
+	\ifnum\totalfigures>0
 	\PRIVATEbookmarkthis{\listfigurename}
 	\chapter[n]*{\listfigurename}
 	\@mkboth{\listfigurename}{\listfigurename}%
 	\@starttoc{lof}%
 	\clearpage
+	\fi
 }
 
 % ---
@@ -708,11 +711,13 @@
 \setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
 
 \newcommand{\ListadeQuadros}{
+	\ifnum\totalquadros>0
 	\PRIVATEbookmarkthis{\listofquadrosname}
 	\chapter[n]*{\listofquadrosname}
 	\@mkboth{\listofquadrosname}{\listofquadrosname}%
 	\@starttoc{loq}%
 	\clearpage
+	\fi
 }
 
 % ---
@@ -726,11 +731,13 @@
 
 \def\ListadeTabelas{\listoftables}
 \renewcommand{\listoftables}{
+	\ifnum\totaltables>0
 	\PRIVATEbookmarkthis{\listtablename}
 	\chapter[n]*{\listtablename}
 	\@mkboth{\listtablename}{\listtablename}%
 	\@starttoc{lot}%
 	\clearpage
+	\fi
 }
 
 % ---
@@ -739,6 +746,13 @@
 \counterwithin{figure}{chapter}
 \counterwithin{quadro}{chapter}
 \counterwithin{table}{chapter}
+
+% ---
+% Define contadores totais de figuras, quadros e tabelas
+% ---
+\DeclareTotalCounter{figure}
+\DeclareTotalCounter{quadro}
+\DeclareTotalCounter{table}
 
 % ---
 % Imprimir lista de símbolos e abreviaturas
