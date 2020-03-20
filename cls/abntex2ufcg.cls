@@ -721,6 +721,13 @@
 }
 
 % ---
+% Enumeração de figuras, quadros e tabelas por capítulo
+% ---
+\counterwithin{figure}{chapter}
+\counterwithin{quadro}{chapter}
+\counterwithin{table}{chapter}
+
+% ---
 % Imprimir lista de símbolos e abreviaturas
 % ---
 \newcommand{\simbolo}{\nomenclature}
