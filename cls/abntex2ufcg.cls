@@ -760,6 +760,7 @@
 \newcommand{\simbolo}{\nomenclature}
 \newcommand{\abreviatura}{\nomenclature}
 \renewcommand{\nomname}{Lista de s\'{\i}mbolos e abreviaturas}
+\renewcommand{\pagedeclaration}[1]{\hfill\hyperlink{page.#1}{\nobreakspace#1}}
 \makenomenclature
 \newcommand{\ListadeSimbolos}{
 	\PRIVATEbookmarkthis{\nomname}
