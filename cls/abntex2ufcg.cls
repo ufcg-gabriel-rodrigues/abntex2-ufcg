@@ -491,6 +491,20 @@
 }
 
 % ---
+% Impressão de elementos pós-textuais
+% ---
+\newcommand{\imprimirpostextual}{
+	% Referências bibliográficas
+	\bibliography{src/bib/main}
+	
+	% Apêndices
+	\Apendices
+	
+	% Anexos
+	\Anexos
+}
+
+% ---
 % Impressão da ficha catalográfica
 % ---
 \newcommand{\FichaCatalografica}{%
@@ -804,6 +818,32 @@
 		\@mkboth{\chaptername\ \thechapter. Conclus\~{a}o}{\chaptername\ \thechapter. Conclus\~{a}o}
 		\input{src/etc/conclusao.tex}
 	}{\typeout{MISSING FILE: src/etc/conclusao.tex}}
+}
+
+% ---
+% Impressão dos apendices
+% ---
+\newcommand{\Apendices}{
+	\IfFileExists{\@currdir src/apendice/apendice.tex}{
+		\begin{apendicesenv}
+			\PRIVATEbookmarkthis{\apendicesname}
+			\partapendices
+			\input{src/apendice/apendice.tex}
+		\end{apendicesenv}
+	}{\typeout{MISSING FILE: src/apendice/apendice.tex}}
+}
+
+% ---
+% Impressão dos anexos
+% ---
+\newcommand{\Anexos}{
+	\IfFileExists{\@currdir src/anexo/anexo.tex}{
+		\begin{anexosenv}
+			\PRIVATEbookmarkthis{\anexosname}
+			\partanexos
+			\input{src/anexo/anexo.tex}
+		\end{anexosenv}
+	}{\typeout{MISSING FILE: src/anexo/anexo.tex}}
 }
 
 % ---
