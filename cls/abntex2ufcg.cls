@@ -606,7 +606,7 @@
 % ---
 % Impressão do resumo em português
 % ---
-\newcommand{\ResumoPt}{%
+\newcommand{\ResumoPt}{
 	\IfFileExists{\@currdir src/etc/resumopt.tex}{
 		\newpage
 		\PRIVATEbookmarkthis{\resumoname}
@@ -621,51 +621,51 @@
 % ---
 % Impressão do resumo em inglês
 % ---
-\newcommand{\ResumoEn}{%
+\newcommand{\ResumoEn}{
 	\IfFileExists{\@currdir src/etc/resumoen.tex}{
-		\selectlanguage{english}
-		\newpage
-		\PRIVATEbookmarkthis{\resumoname}
-		\thispagestyle{empty}
-		\centerline{\huge\bfseries \resumoname}
-		\par
-		\medskip
-		\noindent\input{src/etc/resumoen.tex}
-		\selectlanguage{brazil}
+		\begin{otherlanguage}{english}
+			\newpage
+			\PRIVATEbookmarkthis{\resumoname}
+			\thispagestyle{empty}
+			\centerline{\huge\bfseries \resumoname}
+			\par
+			\medskip
+			\noindent\input{src/etc/resumoen.tex}
+		\end{otherlanguage}
 	}{\typeout{MISSING FILE: src/etc/resumoen.tex}}
 }
 
 % ---
 % Impressão do resumo em francês
 % ---
-\newcommand{\ResumoFr}{%
+\newcommand{\ResumoFr}{
 	\IfFileExists{\@currdir src/etc/resumofr.tex}{
-		\selectlanguage{french}
-		\newpage
-		\PRIVATEbookmarkthis{\resumoname}
-		\thispagestyle{empty}
-		\centerline{\huge\bfseries \resumoname}
-		\par
-		\medskip
-		\noindent\input{src/etc/resumofr.tex}
-		\selectlanguage{brazil}
+		\begin{otherlanguage}{french}
+			\newpage
+			\PRIVATEbookmarkthis{\resumoname}
+			\thispagestyle{empty}
+			\centerline{\huge\bfseries \resumoname}
+			\par
+			\medskip
+			\noindent\input{src/etc/resumofr.tex}
+		\end{otherlanguage}
 	}{\typeout{MISSING FILE: src/etc/resumofr.tex}}
 }
 
 % ---
 % Impressão do resumo em espanhol
 % ---
-\newcommand{\ResumoEs}{%
-\IfFileExists{\@currdir src/etc/resumoes.tex}{
-		\selectlanguage{spanish}
-		\newpage
-		\PRIVATEbookmarkthis{\resumoname}
-		\thispagestyle{empty}
-		\centerline{\huge\bfseries \resumoname}
-		\par
-		\medskip
-		\noindent\input{src/etc/resumoes.tex}
-		\selectlanguage{brazil}
+\newcommand{\ResumoEs}{
+	\IfFileExists{\@currdir src/etc/resumoes.tex}{
+		\begin{otherlanguage}{spanish}
+			\newpage
+			\PRIVATEbookmarkthis{\resumoname}
+			\thispagestyle{empty}
+			\centerline{\huge\bfseries \resumoname}
+			\par
+			\medskip
+			\noindent\input{src/etc/resumoes.tex}
+		\end{otherlanguage}
 	}{\typeout{MISSING FILE: src/etc/resumoes.tex}}
 }
 
