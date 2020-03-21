@@ -1,4 +1,4 @@
-%% programaalianca.cls
+%% abntex2ufcg.cls
 %% Copyright 2020 by Gabriel Sales Lins Rodrigues
 %%
 %% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade Federal de Campina Grande
@@ -17,7 +17,43 @@
 %%
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
 %%
-%% This work consists of the file abntex2ufcg.cls
+%% This work consists of the files:
+%% - cls/abntex2ufcg.cls
+%% - cls/courses/engeletrica.sty
+%% - cls/courses/engquimica.sty
+%% - cls/doctype/doutorado.sty
+%% - cls/doctype/mestrado.sty
+%% - cls/doctype/projetod.sty
+%% - cls/doctype/projetom.sty
+%% - cls/doctype/qualificacaod.sty
+%% - cls/logos/
+%% - inc/dsc.tex
+%% - inc/msc.tex
+%% - inc/prd.tex
+%% - inc/prm.tex
+%% - inc/qlf.tex
+%% - res/
+%% - src/anexo/anexo.tex
+%% - src/apendice/apendice.tex
+%% - src/bib/main.bib
+%% - src/cap2/cap2.tex
+%% - src/cap3/cap3.tex
+%% - src/cap4/cap4.tex
+%% - src/cap5/cap5.tex
+%% - src/etc/agradecimentos.tex
+%% - src/etc/conclusao.tex
+%% - src/etc/dedicatoria.tex
+%% - src/etc/epigrafe.tex
+%% - src/etc/errata.tex
+%% - src/etc/fichacatalografica.tex
+%% - src/etc/folhadeaprovacao.tex
+%% - src/etc/introducao.tex
+%% - src/etc/resumoen.tex
+%% - src/etc/resumoes.tex
+%% - src/etc/resumofr.tex
+%% - src/etc/resumopt.tex
+%% - src/fig/
+%% - main.tex
 
 % ---
 % Declaração da classe 'abntex2ufcg' como uma extensão da classe 'abntex2'
@@ -30,11 +66,11 @@
 % Pacotes obrigatórios
 % ---
 \RequirePackage{expl3}
+\RequirePackage[table]{xcolor}
 \RequirePackage[refpage]{nomencl}
 \RequirePackage{environ}
 \RequirePackage{pdflscape}
 \RequirePackage{afterpage}
-\RequirePackage{color}
 \RequirePackage[final]{pdfpages}
 \RequirePackage{totalcount}
 
