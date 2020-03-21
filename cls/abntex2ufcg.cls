@@ -680,7 +680,7 @@
 
 \def\ListadeFiguras{\listoffigures}
 \renewcommand{\listoffigures}{
-	\ifnum\totalfigures>0
+	\iftotalfigures
 		\PRIVATEbookmarkthis{\listfigurename}
 		\chapter[n]*{\listfigurename}
 		\@mkboth{\listfigurename}{\listfigurename}%
@@ -701,7 +701,6 @@
 
 % configurações para atender às regras da ABNT
 \setfloatadjustment{quadro}{\centering}
-\counterwithout{quadro}{chapter}
 %\renewcommand{\cftquadroname}{\quadroname\space} 
 %\renewcommand*{\cftquadroaftersnum}{\hfill\textendash\hfill}
 \renewcommand{\cftquadroname}{} 
@@ -711,7 +710,7 @@
 \setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
 
 \newcommand{\ListadeQuadros}{
-	\ifnum\totalquadros>0
+	\iftotalquadros
 		\PRIVATEbookmarkthis{\listofquadrosname}
 		\chapter[n]*{\listofquadrosname}
 		\@mkboth{\listofquadrosname}{\listofquadrosname}%
@@ -731,7 +730,7 @@
 
 \def\ListadeTabelas{\listoftables}
 \renewcommand{\listoftables}{
-	\ifnum\totaltables>0
+	\iftotaltables
 		\PRIVATEbookmarkthis{\listtablename}
 		\chapter[n]*{\listtablename}
 		\@mkboth{\listtablename}{\listtablename}%
@@ -748,26 +747,30 @@
 \counterwithin{table}{chapter}
 
 % ---
-% Define contadores totais de figuras, quadros e tabelas
+% Define contadores totais de figuras, quadros, tabelas e símbolos/abreviaturas
 % ---
+\newcounter{simbolo}
 \DeclareTotalCounter{figure}
 \DeclareTotalCounter{quadro}
 \DeclareTotalCounter{table}
+\DeclareTotalCounter{simbolo}
 
 % ---
 % Imprimir lista de símbolos e abreviaturas
 % ---
-\newcommand{\simbolo}{\nomenclature}
-\newcommand{\abreviatura}{\nomenclature}
+\newcommand{\simbolo}{\stepcounter{simbolo}\nomenclature}
+\newcommand{\abreviatura}{\stepcounter{simbolo}\nomenclature}
 \renewcommand{\nomname}{Lista de s\'{\i}mbolos e abreviaturas}
 \renewcommand{\pagedeclaration}[1]{\hfill\hyperlink{page.#1}{\nobreakspace#1}}
 \makenomenclature
 \newcommand{\ListadeSimbolos}{
-	\PRIVATEbookmarkthis{\nomname}
-	\@mkboth{\nomname}{\nomname}
-	\printnomenclature
-	\thispagestyle{empty}
-	\clearpage
+	\iftotalsimbolos
+		\PRIVATEbookmarkthis{\nomname}
+		\@mkboth{\nomname}{\nomname}
+		\printnomenclature
+		\thispagestyle{empty}
+		\clearpage
+	\fi
 }
 
 % ---
