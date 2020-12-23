@@ -60,19 +60,6 @@
 % ---
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{abntex2ufcg}
-\LoadClassWithOptions{abntex2}
-
-% ---
-% Pacotes obrigatórios
-% ---
-\RequirePackage{expl3}
-\RequirePackage[table]{xcolor}
-\RequirePackage[refpage]{nomencl}
-\RequirePackage{environ}
-\RequirePackage{pdflscape}
-\RequirePackage{afterpage}
-\RequirePackage[final]{pdfpages}
-\RequirePackage{totalcount}
 
 % ---
 % Opções do curso
@@ -104,7 +91,32 @@
 % ---
 % Processa opções na ordem de declaração deste documento
 % ---
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
 \ProcessOptions\relax
+\LoadClass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão sem verso. Oposto a twoside
+	a4paper,			% tamanho do papel.
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes obrigatórios
+% ---
+\RequirePackage{expl3}
+\RequirePackage[table]{xcolor}
+\RequirePackage[refpage]{nomencl}
+\RequirePackage{environ}
+\RequirePackage{pdflscape}
+\RequirePackage{afterpage}
+\RequirePackage[final]{pdfpages}
+\RequirePackage{totalcount}
 
 % ---
 % Redefinição de fontes do documento
