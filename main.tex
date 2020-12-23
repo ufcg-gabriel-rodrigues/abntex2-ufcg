@@ -11,6 +11,14 @@
 % Para gerar lista a Lista de Símbolos e Abreviaturas
 \immediate\write18{makeindex \jobname.nlo -s nomencl.ist -o \jobname.nls}
 
+% Para adicionar o diretório contendo o arquivo de classe na busca do compilador
+\makeatletter
+\def\input@path{{./cls/}}
+\makeatother
+
+% ---
+% Definição de classe e opções do documento
+% ---
 \documentclass[
 	% -- opções da classe memoir --
 	12pt,				% tamanho da fonte
@@ -32,7 +40,7 @@
 	%prd,				% projeto de doutorado
 	%qlf,				% qualificação de doutorado
 	dsc,				% tese de doutorado
-	]{cls/abntex2ufcg}
+	]{abntex2ufcg}
 
 % ---
 % Pacotes básicos 

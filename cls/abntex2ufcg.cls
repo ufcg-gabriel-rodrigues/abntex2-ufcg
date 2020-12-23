@@ -59,7 +59,7 @@
 % Declaração da classe 'abntex2ufcg' como uma extensão da classe 'abntex2'
 % ---
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cls/abntex2ufcg}
+\ProvidesClass{abntex2ufcg}
 \LoadClassWithOptions{abntex2}
 
 % ---
